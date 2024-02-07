@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Add_student</title>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          background-image: url("{{url_for('static',filename='moon.jpg')}}"); 
+          height: 100vh;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          font-family: Arial, sans-serif;
+        }
+    
+        .container {
+          width: 30%;
+          margin: auto;
+          padding: 20px;
+         color: white;
+          border: 2px solid #333;
+          border-radius: 40px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          box-sizing: border-box;
+          margin-top: 30px;
+        }
+    
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+    
+        label {
+          margin-bottom: 8px;
+          font-weight: bold;
+        }
+    
+        input {
+          padding: 8px;
+          margin-bottom: 16px;
+          border: 1px solid #333;
+          border-radius: 5px;
+          background-color: #333;
+        color: white;       }
+    
+        button {
+          padding: 10px;
+          background-color: #849485;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+    
+        button:hover {
+          background-color: #61ea68;
+        }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <form action="{{url_for('ADD')}}" method="post">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="Name" required>
+    
+          <label for="Mobile">Mobile</label>
+          <input type="number" id="Mobile" name="Phone_Number" required>
+    
+          <label for="Depat">Depatment:</label>
+          <input type="text" id="Depat" name="Depatment" required>
+
+          <label for="Email">Email:</label>
+          <input type="text" id="Email" name="Email" required>
+    
+          <button type="submit">Submit</button>
+        </form>
+      </div> 
+</body>
+</html>

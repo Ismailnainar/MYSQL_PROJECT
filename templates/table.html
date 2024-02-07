@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 70%;
+            height: 10%;
+            margin-top:150px;
+            transition-property: none;
+            text-align: center;
+            margin-left: 180px;
+            
+            
+        }
+        td,th{
+            border: 1px solid black;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+            color: white;
+        }
+        body{
+          font-family: Arial, Helvetica, sans-serif;
+          background-image: url("{{url_for('static',filename='windows.jpg')}}"); 
+          height: 100vh;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+
+}
+nav{
+    background: darkblue;
+    height: 80px;
+    width: 100%;
+}
+label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 200px;
+    font-weight: bold;
+    
+
+}
+nav ul{
+    float: right;
+    margin-right: 150px;
+
+}
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 10px;
+}
+nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius:3px ;
+    
+}
+a.active,a:hover{
+    background:blue;
+    transition: .5s;
+}
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    
+
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+        <label  class="logo">Student_Deatils</label>
+        <li><a class="active" href="{{url_for('login')}}">HOME</a></li>
+        <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+        <li><a href="{{url_for('ADD')}}">ADD_STUDENT</a></li>
+        </ul>
+    </nav>
+    <div class="container pt-3">
+    {% block body %}
+{% endblock body %}    
+</div>
+    
+    <table>
+        <tr>
+            <th>S1no</th>
+            <th>Name</th>
+            <th>Phone_Number</th>
+            <th>Depatment</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for i in values %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td><a href="{{url_for('Edit',S1no=i[0])}}">Edit</a></td>
+            <td><a href="{{url_for('Delete',S1no=i[0])}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
